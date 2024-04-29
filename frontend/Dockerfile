@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 
 # 1. For build React app
-FROM node:lts AS development
+FROM node:lts-alpine3.19 AS development
 
 # Set working directory
 WORKDIR /app
@@ -41,7 +41,7 @@ COPY --from=gloursdocker/docker / /
 CMD [ "npm", "start" ]
 
 # 2. For Nginx setup
-FROM nginx:alpine
+FROM nginx:stable-alpine3.19-slim
 
 # Copy config nginx
 COPY --from=build /app/.nginx/nginx.conf /etc/nginx/conf.d/default.conf

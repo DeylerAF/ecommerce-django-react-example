@@ -1,7 +1,7 @@
 services:
   db:
     container_name: postgres
-    image: postgres:latest
+    image: postgres:16.2-alpine3.19
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
@@ -14,7 +14,7 @@ services:
 
   pgadmin:
     container_name: pgadmin
-    image: dpage/pgadmin4:latest
+    image: elestio/pgadmin:latest
     environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_MAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PW}
