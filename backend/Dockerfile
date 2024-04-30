@@ -1,5 +1,5 @@
 # 1. For building Django app
-FROM python:3.12.3-alpine3.19 AS development
+FROM python:3.12.3-alpine AS development
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -27,7 +27,7 @@ CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "api.asgi:application"]
 EXPOSE 8000
 
 # 2. For Nginx setup
-FROM nginx:stable-alpine3.19-slim AS nginx
+FROM nginx:stable-alpine-slim AS nginx
 
 # Copy Nginx configuration
 COPY ./.nginx/nginx.conf /etc/nginx/conf.d/default.conf
